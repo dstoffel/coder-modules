@@ -22,13 +22,13 @@ if [ "${DB_PATH}" != "filebrowser.db" ]; then
 fi
 
 if test -f "${DB_PATH}"; then
-  printf "DB ${DB_PATH} is existing, skipping initializing"
+  printf "DB ${DB_PATH} is existing, skipping initializing\n\n"
 else
-  printf "DB ${DB_PATH} not existing, initializing"
+  printf "DB ${DB_PATH} not existing, initializing\n\n"
   filebrowser $${DB_FLAG} config init
 fi
 
-printf "Setting baseurl to ${SERVER_BASE_PATH}"
+printf "Setting baseurl to ${SERVER_BASE_PATH}\n\n"
 filebrowser config set --baseurl "${SERVER_BASE_PATH}" $${DB_FLAG} > ${LOG_PATH} 2>&1
 
 printf "📂 Serving $${ROOT_DIR} at http://localhost:${PORT} \n\n"
