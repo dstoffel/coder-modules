@@ -21,21 +21,10 @@ if [ "${DB_PATH}" != "filebrowser.db" ]; then
   DB_FLAG=" -d ${DB_PATH}"
 fi
 
-if test -f "${DB_PATH}"; then
-  printf "DB ${DB_PATH} is existing, skipping initializing\n\n"
-else
-  printf "DB ${DB_PATH} not existing, initializing\n\n"
-  filebrowser $${DB_FLAG} config init
-fi
-
-printf "Setting baseurl to ${SERVER_BASE_PATH}\n\n"
-filebrowser config set --baseurl "${SERVER_BASE_PATH}" $${DB_FLAG} > ${LOG_PATH} 2>&1
-
 printf "📂 Serving $${ROOT_DIR} at http://localhost:${PORT} \n\n"
 
-printf "Running 'filebrowser --noauth --root $ROOT_DIR --port ${PORT}$${DB_FLAG}' \n\n"
-
-filebrowser --noauth --root $ROOT_DIR --port ${PORT} $${DB_FLAG} >> ${LOG_PATH} 2>&1 &
+printf "Running 'filebrowser --noauth --root $ROOT_DIR --port ${PORT}$${DB_FLAG}' -b ${SERVER_BASE_PATH} \n\n"
+filebrowser --noauth --root $ROOT_DIR --port ${PORT}$${DB_FLAG} -b ${SERVER_BASE_PATH} > ${LOG_PATH} 2>&1 &
 
 
 printf "📝 Logs at ${LOG_PATH} \n\n"
