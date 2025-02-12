@@ -19,6 +19,7 @@ if ! command -v jupyter-lab > /dev/null 2>&1; then
   fi
   # install jupyterlab
   pipx install -q jupyterlab
+  pipx install --upgrade jupyterlab jupyterlab-git
   printf "%s\n\n" "🥳 jupyterlab has been installed"
 else
   printf "%s\n\n" "🥳 jupyterlab is already installed"
