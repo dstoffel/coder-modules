@@ -51,6 +51,14 @@ variable "order" {
   default     = null
 }
 
+variable "additional_packages" {
+  type        = string
+  description = "Addition pip package (ex. extension) to install for jupyterlab. Example jupyterlab-git (space separated)
+  default     = ""
+}
+
+JUPYTER_ADDITIONAL_PACKAGES
+
 resource "coder_script" "jupyterlab" {
   agent_id     = var.agent_id
   display_name = "jupyterlab"
@@ -59,6 +67,7 @@ resource "coder_script" "jupyterlab" {
     LOG_PATH : var.log_path,
     PORT : var.port
     BASE_URL : var.subdomain ? "" : "/@${data.coder_workspace_owner.me.name}/${data.coder_workspace.me.name}/apps/jupyterlab"
+    JUPYTER_ADDITIONAL_PACKAGES : var.additional_packages
   })
   run_on_start = true
 }
