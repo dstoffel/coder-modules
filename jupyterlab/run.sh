@@ -20,7 +20,7 @@ if ! command -v jupyter-lab > /dev/null 2>&1; then
   # install jupyterlab
   pipx install -q jupyterlab
   if [ "${JUPYTER_ADDITIONAL_PACKAGES}" != "" ]; then
-    printf "%s\n\n" "Installating additional packages ${JUPYTER_ADDITIONAL_PACKAGES}"
+    printf "%s\n\n" "Installating additional packages: ${JUPYTER_ADDITIONAL_PACKAGES}"
     pipx runpip jupyterlab install -q ${JUPYTER_ADDITIONAL_PACKAGES}
   fi
   printf "%s\n\n" "🥳 jupyterlab has been installed"
