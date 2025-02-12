@@ -57,8 +57,6 @@ variable "additional_packages" {
   default     = ""
 }
 
-JUPYTER_ADDITIONAL_PACKAGES
-
 resource "coder_script" "jupyterlab" {
   agent_id     = var.agent_id
   display_name = "jupyterlab"
