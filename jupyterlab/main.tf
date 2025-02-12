@@ -53,7 +53,7 @@ variable "order" {
 
 variable "additional_packages" {
   type        = string
-  description = "Addition pip package (ex. extension) to install for jupyterlab. Example jupyterlab-git (space separated)
+  description = "Addition pip package (ex. extension) to install for jupyterlab. Example jupyterlab-git (space separated)"
   default     = ""
 }
 
